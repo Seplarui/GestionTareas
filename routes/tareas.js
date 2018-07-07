@@ -9,8 +9,8 @@ connection.query('USE ' + dbconfig.database);
 
 
 /* GET users listing. */
-router.get('/kk', function(req, res, next) {
-    connection.query('select * from tareasestados', function(err, resultados) {
+router.get('/', function(req, res, next) {
+    connection.query('select * from tareas ta, tareasestados es where ta.idestado=es.idestado  ', function(err, resultados) {
         if (err) throw err;
         console.log('Resultados: ', resultados);
         res.send(resultados);
